@@ -1,0 +1,7 @@
+require "time"
+
+task :specs, [:tags] do |task, args|
+    time = Time.now.iso8601.tr(":","").gsub(/-0300/, '')
+    report = "--format html --out=reports/report_#{time}.html"
+    sh "cucumber #{args[:tags]} #{report}"
+end
